@@ -23,7 +23,6 @@ export const Todo = () => {
         
         setInputValue("");
     };
-    console.log("hello")
     return(
     <section className="flex items-center flex-col" >
         
