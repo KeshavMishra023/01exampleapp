@@ -23,9 +23,10 @@ export const Todo = () => {
         
         setInputValue("");
     };
-
+    console.log("hello")
     return(
     <section className="flex items-center flex-col" >
+        
         <header className="py-[3%]">
             <h1 className="text-5xl">
                 Todo list
