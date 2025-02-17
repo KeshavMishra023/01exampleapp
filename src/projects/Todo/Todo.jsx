@@ -21,7 +21,7 @@ export const Todo = () => {
     const handleInputChange = (value) => {
         setInputValue(value);
     };
-
+    // add commit
     const handleFormSumbit = (event) => {
         event.preventDefault();
 
