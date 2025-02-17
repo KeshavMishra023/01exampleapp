@@ -3,11 +3,20 @@ import { FaCheck } from "react-icons/fa6";
 
 import { MdOutlineDeleteForever } from "react-icons/md";
 
+
+const todokey = "reactTodo";
+
 export const Todo = () => {
     const [inputValue, setInputValue] =useState("");
     const [dateTime, setDateTime] = useState("");
 
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState( () => {
+        // this is add a variable to local stroge
+        const rawTodos = localStorage.getItem( todokey);
+
+        if (!rawTodos) return [];
+        return JSON.parse(rawTodos);
+    });
 
     const handleInputChange = (value) => {
         setInputValue(value);
@@ -57,6 +66,10 @@ export const Todo = () => {
     const handleClearAll = () => {
         setTask([]);
     };
+
+
+    // add data to localstroge
+    localStorage.setItem(todokey, JSON.stringify(task));
    
     return(
     <section className="flex items-center flex-col gap-3" >
