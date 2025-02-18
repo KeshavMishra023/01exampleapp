@@ -6,6 +6,12 @@ export const ShortCircit = () => {
     // set user state
     const [user, setUser] = useState("");
 
+    const [count, setCount] = useState();
+    if(user){
+        // const [count, setCount] = useState(); it is not use for conditional opertaors this is the against of thr hoks rule
+        setCount(count + 1);
+    }
+
     return(
         <section className="flex items-center justify-center flex-col gap-10 mt-6">
             <h1 className="text-4xl">Welcome to the ShortCircuit Evaluation!</h1>
