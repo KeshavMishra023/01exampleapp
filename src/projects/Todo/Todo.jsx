@@ -5,18 +5,19 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 
 
 const todokey = "reactTodo";
+const getLocalStrogeTodoData = () => {
+     // this is add a variable to local stroge
+     const rawTodos = localStorage.getItem( todokey);
+
+     if (!rawTodos) return [];
+     return JSON.parse(rawTodos);
+};
 
 export const Todo = () => {
     const [inputValue, setInputValue] =useState("");
     const [dateTime, setDateTime] = useState("");
 
-    const [task, setTask] = useState( () => {
-        // this is add a variable to local stroge
-        const rawTodos = localStorage.getItem( todokey);
-
-        if (!rawTodos) return [];
-        return JSON.parse(rawTodos);
-    });
+    const [task, setTask] = useState( () =>  getLocalStrogeTodoData());
 
     const handleInputChange = (value) => {
         setInputValue(value);
