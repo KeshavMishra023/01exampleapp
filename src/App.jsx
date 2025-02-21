@@ -1,7 +1,9 @@
 
 import './App.css'
-import { Counter } from './components/hooks/usestate/Index';
-import Todo from './projects/Todo/Todo';
+import { LoginForm } from './components/LginForm';
+
+import { RegisterFormReact } from './components/RegisterFormReact';
+
 
 
 
@@ -9,7 +11,7 @@ import Todo from './projects/Todo/Todo';
 export const App = () => {
   return (
     <section>
-      < Todo/>
+      < LoginForm />
     </section>
   );
 }

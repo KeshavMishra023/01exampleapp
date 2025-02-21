@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 
 import { MdOutlineDeleteForever } from "react-icons/md";
+import { sum } from "../../utiles";
 
 
 const todokey = "reactTodo";
@@ -12,6 +13,17 @@ const getLocalStrogeTodoData = () => {
      if (!rawTodos) return [];
      return JSON.parse(rawTodos);
 };
+
+
+  // secarch btn process
+
+//   const result = todokey.filter("inputValue");
+//   console.log(result);
+const filterByName = (name) => {
+    const filteredData = todokey.filter((item) => item.name === name);
+    console.log(filteredData); // Ye sirf console me result dikhayega
+  };
+  
 
 export const Todo = () => {
     const [inputValue, setInputValue] =useState("");
@@ -56,8 +68,6 @@ export const Todo = () => {
     // handleDelteTodo 
 
     const handleDelteTodo = (value) => {
-        console.log(task);
-        console.log(value);
         const updatedTask = task.filter((curTask) => curTask !== value);
         setTask(updatedTask);
     };
@@ -71,7 +81,10 @@ export const Todo = () => {
 
     // add data to localstroge
     localStorage.setItem(todokey, JSON.stringify(task));
+    // console.log("sum(5,7)", sum(5,7))
    
+  
+
     return(
     <section className="flex items-center flex-col gap-3" >
         
@@ -82,22 +95,38 @@ export const Todo = () => {
             <h2 className="text-2xl mt-4.5"> {dateTime} </h2>
         </header>
         <section>
-            <form className="flex items-center gap-0" onSubmit={handleFormSumbit}>
-                <div >
-                    <input
-                    type="text"
-                    autoComplete="off" 
-                    className="bg-gray-400 rounded-l-2xl py-2.5 px-3 outline-0  text-white" 
-                    value={inputValue} 
-                    onChange={(event) => handleInputChange(event.target.value)}
-                    />
+            <form className="flex flex-col items-center gap-10" onSubmit={handleFormSumbit}>
+                <div className="flex ">
+                    <div >
+                        <input
+                        type="text"
+                        autoComplete="off" 
+                        className="bg-gray-400 rounded-l-2xl py-2.5 px-3 outline-0  text-white" 
+                        value={inputValue} 
+                        onChange={(event) => handleInputChange(event.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <button 
+                        type="sumbit" 
+                        className="py-2.5 px-2.5 bg-blue-300 text-white rounded-r-2xl hover:bg-yellow-300 ">
+                        Add Task
+                        </button>
+                    </div>
                 </div>
                 <div>
+                <div className="flex ">
+                    <input 
+                        type="text" 
+                        autoComplete="off"
+                        className="bg-gray-400 rounded-l-2xl py-2.5 px-3 outline-0  text-white"/>
                     <button 
-                    type="sumbit" 
-                    className="py-2.5 px-2.5 bg-blue-300 text-white rounded-r-2xl hover:bg-yellow-300 ">
-                    Add Task
+                        type="sumbit" 
+                        // value={searchValue}
+                        className="py-2.5 px-2.5 bg-blue-300 text-white rounded-r-2xl hover:bg-yellow-300 ">
+                        Search TAsk
                     </button>
+                </div>
                 </div>
             </form>
         </section>
